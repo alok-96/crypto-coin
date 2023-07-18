@@ -20,15 +20,19 @@ import "../styles/App.css";
 const Header = () => {
   return (
     <HStack
-      p={"4"}
+      p={["2", "4"]}
       justifyContent={"space-between"}
       alignItems={"center"}
-      h={"10vh"}
+      h={["8vh", "9vh", "10vh"]}
       boxShadow={"10px 0px 10px #222222"}
     >
       <HStack alignItems={"center"}>
         <Img src={logo} w={"50px"}></Img>
-        <Text fontSize={['20px', '25px', '30px']} fontWeight={"500"} color={"#986d2c"}>
+        <Text
+          fontSize={["20px", "25px", "30px"]}
+          fontWeight={"500"}
+          color={"#986d2c"}
+        >
           Crypto Coin
         </Text>
       </HStack>
