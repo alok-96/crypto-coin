@@ -4,23 +4,14 @@
     box-sizing: border-box;
 }
 
-.home {
-    /* background-color: #121212; */
-    width: 100vw;
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
 .logo {
-    width: 400px;
-    transition: all 0.3s;
+    animation: move 0.7s linear infinite alternate;
 }
 
-.logo:hover {
-    transform: scale(1.1);
+@keyframes move {
+    to{
+        transform: translateY(-20px);
+    }
 }
 
 .spinner{

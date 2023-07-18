@@ -33,10 +33,10 @@ const Exchanges = () => {
     <Container maxW={"container.xl"} bgColor={""}>
       {loading ? (
         <div className="spinner">
-          <Spinner size={"xl"} color={"#c09956"} />
+          <Spinner size={"xl"} color={"#986d2c"} />
         </div>
       ) : (
-        <HStack wrap={"wrap"} justifyContent={"space-evenly"}>
+        <HStack wrap={"wrap"} justifyContent={"space-evenly"} marginTop={'8'}>
           {exchanges.map((i) => (
             <ExchangeCard
               key={i.id}

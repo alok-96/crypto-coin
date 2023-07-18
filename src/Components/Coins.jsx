@@ -39,19 +39,24 @@ const Coins = () => {
     <Container maxW={"container.xl"} bgColor={""}>
       {loading ? (
         <div className="spinner">
-          <Spinner size={"xl"} color={"#c09956"} />
+          <Spinner size={"xl"} color={"#986d2c"} />
         </div>
       ) : (
         <>
           <RadioGroup value={currency} onChange={setCurrency}>
-            <HStack color={"#c09956"} spacing={8} m={4} justifyContent={'center'}>
-              <Radio value={"inr"} border={"2px solid #c09956"}>
+            <HStack
+              color={"#222222"}
+              spacing={8}
+              m={4}
+              justifyContent={"center"}
+            >
+              <Radio value={"inr"} border={"2px solid #222222"}>
                 INR (₹)
               </Radio>
-              <Radio value={"usd"} border={"2px solid #c09956"}>
+              <Radio value={"usd"} border={"2px solid #222222"}>
                 USD ($)
               </Radio>
-              <Radio value={"eur"} border={"2px solid #c09956"}>
+              <Radio value={"eur"} border={"2px solid #222222"}>
                 EUR (€)
               </Radio>
             </HStack>
