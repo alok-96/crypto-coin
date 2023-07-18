@@ -8,7 +8,12 @@ const Home = () => {
   return (
     <>
       <Stack
-        direction={["column-reverse", "column-reverse", "row"]}
+        direction={[
+          "column-reverse",
+          "column-reverse",
+          "column-reverse",
+          "row",
+        ]}
         minH={"70vh"}
         alignItems={"center"}
         py={"8"}
@@ -38,9 +43,8 @@ const Home = () => {
       </Stack>
 
       <Stack
-        direction={["column", "column", "row"]}
+        direction={["column", "column", "column", "row"]}
         minH={"80vh"}
-        alignItems={"center"}
         py={"8"}
       >
         <Img src={mobile} alt="" m={"auto"} w={["150px", "200px", "250px"]} />
@@ -53,7 +57,6 @@ const Home = () => {
           <Heading
             size={["xl", "2xl"]}
             lineHeight={"50px"}
-            textAlign={["center", "center", "start"]}
             my={"4"}
           >
             Build your crypto portfolio
@@ -73,7 +76,12 @@ const Home = () => {
       </Stack>
 
       <Stack
-        direction={["column-reverse", "column-reverse", "row"]}
+        direction={[
+          "column-reverse",
+          "column-reverse",
+          "column-reverse",
+          "row",
+        ]}
         minH={"80vh"}
         alignItems={"center"}
         py={"8"}

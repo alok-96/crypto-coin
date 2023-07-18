@@ -8,6 +8,7 @@ import {
   Radio,
 } from "@chakra-ui/react";
 import CoinCard from "./CoinCard";
+import Error from "./Error";
 
 const Coins = () => {
   const [coins, setCoins] = useState([]);
@@ -35,6 +36,8 @@ const Coins = () => {
     fetchCoins();
   });
 
+
+  if (error) return <Error />;
   return (
     <Container maxW={"container.xl"} bgColor={""}>
       {loading ? (

@@ -6,6 +6,7 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import ExchangeCard from './ExchangeCard';
+import Error from './Error';
 
 const Exchanges = () => {
   const [exchanges, setExchanges] = useState([]);
@@ -29,6 +30,7 @@ const Exchanges = () => {
     fetchExchanges();
   });
 
+  if(error) return <Error />;
   return (
     <Container maxW={"container.xl"} bgColor={""}>
       {loading ? (
