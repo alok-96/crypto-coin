@@ -38,7 +38,7 @@ const CoinDetails = () => {
   const buttons = ["24h", "7d", "15d", "30d", "90d", "1y", "max"];
   const changeChartDetails = (i) => {
     switch (i) {
-      case "1d":
+      case "24h":
         setDays("24h");
         setLoading(true);
         break;
@@ -68,7 +68,7 @@ const CoinDetails = () => {
         break;
 
       default:
-        setDays(1);
+        setDays("24h");
         setLoading(true);
         break;
     }
@@ -135,6 +135,7 @@ const CoinDetails = () => {
             {buttons.map((i) => (
               <Button
                 key={i}
+                isDisabled={i === days}
                 onClick={() => changeChartDetails(i)}
                 color={"#222222"}
                 bgColor={"#b5b5b5"}
@@ -150,15 +151,23 @@ const CoinDetails = () => {
             <Text alignSelf={"center"} opacity={"0.7"} fontSize={"small"}>
               Last Updated on {coin.market_data.last_updated}
             </Text>
-            <Image src={coin.image.large} w={"16"} h={"16"} />
+            <Image
+              src={coin.image.large}
+              w={"16"}
+              h={"16"}
+              alignSelf={["center", "start", "start"]}
+              marginTop={"4"}
+            />
 
-            <Stat>
-              <StatLabel>{coin.name}</StatLabel>
+            <Stat alignSelf={["center", "start", "start"]}>
+              <StatLabel textAlign={["center", "start", "start"]}>
+                {coin.name}
+              </StatLabel>
               <StatNumber>
                 {currencySymbol}
                 {coin.market_data.current_price[currency]}
               </StatNumber>
-              <StatHelpText>
+              <StatHelpText textAlign={["center", "start", "start"]} >
                 <StatArrow
                   type={
                     coin.market_data.price_change_percentage_24h > 0
@@ -173,6 +182,7 @@ const CoinDetails = () => {
             <Badge
               fontSize={"2xl"}
               bgColor={"#986d2c"}
+              color={"white"}
             >{`#${coin.market_cap_rank}`}</Badge>
 
             {/* Range Bar */}

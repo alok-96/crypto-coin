@@ -27,7 +27,7 @@ const Chart = ({ arr = [], currencySymbol, days }) => {
 
   // console.log(arr);
   for (let i = 0; i < arr.length; i++) {
-    if (days === 1) date.push(new Date(arr[i][0]).toLocaleTimeString());
+    if (days === "24h") date.push(new Date(arr[i][0]).toLocaleTimeString());
     else date.push(new Date(arr[i][0]).toLocaleDateString());
     prices.push(arr[i][1]);
   }
@@ -42,7 +42,7 @@ const Chart = ({ arr = [], currencySymbol, days }) => {
             label: `Price in ${currencySymbol}`,
             data: prices,
             borderColor: "#986d2c",
-            backgroundColor: "#a37b40",
+            backgroundColor: "rgba(152, 109, 44, 0.5)",
           },
         ],
       }}
