@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../assets/logo.png";
 
 import {
-  AiFillCodepenCircle,
+  AiFillLinkedin,
   AiFillFacebook,
   AiFillInstagram,
   AiFillGithub,
@@ -27,12 +27,47 @@ const Footer = () => {
         </HStack>
         <Text>Copyright &copy; 2023 , All Rights Reserved.</Text>
       </VStack>
-      <HStack px={'4'} flex={'50%'} justifyContent={[ 'center' , 'center', 'flex-end']} gap={'30px'} >
-        <AiFillCodepenCircle size={'30'} />
-        <AiFillFacebook size={'30'} />
-        <AiFillTwitterCircle size={'30'} />
-        <AiFillInstagram size={'30'} />
-        <AiFillGithub size={'30'} />
+      <HStack
+        px={"4"}
+        flex={"50%"}
+        justifyContent={["center", "center", "flex-end"]}
+        gap={"30px"}
+      >
+        <a
+          href="https://www.linkedin.com/in/alok-dwivedi-4347801b8/"
+          target="blank"
+          rel="noopener noreferrer"
+        >
+          <AiFillLinkedin size={"30"} />
+        </a>
+        <a
+          href="https://www.facebook.com/profile.php?id=100070380284005"
+          target="blank"
+          rel="noopener noreferrer"
+        >
+          <AiFillFacebook size={"30"} />
+        </a>
+        <a
+          href="https://twitter.com/alokdwivedi99"
+          target="blank"
+          rel="noopener noreferrer"
+        >
+          <AiFillTwitterCircle size={"30"} />
+        </a>
+        <a
+          href="https://www.instagram.com/_its_alok_07_/"
+          target="blank"
+          rel="noopener noreferrer"
+        >
+          <AiFillInstagram size={"30"} />
+        </a>
+        <a
+          href="https://github.com/alok-96"
+          target="blank"
+          rel="noopener noreferrer"
+        >
+          <AiFillGithub size={"30"} />
+        </a>
       </HStack>
     </Stack>
   );
