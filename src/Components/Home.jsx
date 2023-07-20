@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../assets/logo.png";
 import mobile from "../assets/mobile.webp";
 import laptop from "../assets/laptop.png";
-import { Container, Heading, Img, Stack, Text, VStack } from "@chakra-ui/react";
+import { Heading, Img, Stack, Text, VStack } from "@chakra-ui/react";
 
 const Home = () => {
   return (
@@ -54,11 +54,7 @@ const Home = () => {
           textAlign={["center", "center", "start"]}
           p={["4", "8"]}
         >
-          <Heading
-            size={["xl", "2xl"]}
-            lineHeight={"50px"}
-            my={"4"}
-          >
+          <Heading size={["xl", "2xl"]} lineHeight={"50px"} my={"4"}>
             Build your crypto portfolio
           </Heading>
           <Text fontSize={["md", "xl", "2xl"]} py={"4"}>
