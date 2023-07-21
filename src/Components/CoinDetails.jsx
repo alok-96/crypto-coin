@@ -167,7 +167,7 @@ const CoinDetails = () => {
                 {currencySymbol}
                 {coin.market_data.current_price[currency]}
               </StatNumber>
-              <StatHelpText textAlign={["center", "start", "start"]} >
+              <StatHelpText textAlign={["center", "start", "start"]}>
                 <StatArrow
                   type={
                     coin.market_data.price_change_percentage_24h > 0
@@ -204,22 +204,55 @@ const CoinDetails = () => {
 
           {/* Some other details about selected coin */}
           <Box w={"full"} py={"4"}>
-            <Item title={"Max Supply"} value={coin.market_data.max_supply} />
+            <Item
+              title={"Max Supply"}
+              value={
+                coin.market_data.max_supply ? (
+                  coin.market_data.max_supply
+                ) : (
+                  <>Not Available</>
+                )
+              }
+            />
             <Item
               title={"Circulating Supply"}
-              value={coin.market_data.circulating_supply}
+              value={
+                coin.market_data.circulating_supply ? (
+                  coin.market_data.circulating_supply
+                ) : (
+                  <>Not Available</>
+                )
+              }
             />
             <Item
               title={"Market Cap"}
-              value={`${currencySymbol}${coin.market_data.market_cap[currency]}`}
+              value={
+                coin.market_data.market_cap[currency] ? (
+                  `${currencySymbol}${coin.market_data.market_cap[currency]}`
+                ) : (
+                  <>Not Available</>
+                )
+              }
             />
             <Item
               title={"All Time Low"}
-              value={`${currencySymbol}${coin.market_data.atl[currency]}`}
+              value={
+                coin.market_data.atl[currency] ? (
+                  `${currencySymbol}${coin.market_data.atl[currency]}`
+                ) : (
+                  <>Not Available</>
+                )
+              }
             />
             <Item
               title={"All Time High"}
-              value={`${currencySymbol}${coin.market_data.ath[currency]}`}
+              value={
+                coin.market_data.atl[currency] ? (
+                  `${currencySymbol}${coin.market_data.ath[currency]}`
+                ) : (
+                  <>Not Available</>
+                )
+              }
             />
           </Box>
         </>
