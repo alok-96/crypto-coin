@@ -5,6 +5,7 @@ import Home from "./Components/Home";
 import Coins from "./Components/Coins";
 import CoinDetails from "./Components/CoinDetails";
 import Exchanges from "./Components/Exchanges";
+import ScrollToTop from "./Components/ScrollToTop";
 import Footer from "./Components/Footer";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/exchanges" element={<Exchanges />} />
         <Route path="/coin/:id" element={<CoinDetails />} />
       </Routes>
+      <ScrollToTop />
       <Footer />
     </Router>
   );
