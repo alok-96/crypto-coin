@@ -1,35 +1,46 @@
-## Crypto Coin
-- An application to track the stock prices of Crypto currencies like Bitcoin, Ethereum, Solana etc.
-- It represents the data in the form of graph.
-- CoinGecko api is used to fetch the data related to crypto currencies.
-- It is build using React.js, CSS and Chakra-UI.
+## About the Project 📂
+<b>Crypto Coin</b> is an web application that allows users to search for information about various cryptocurrencies in real-time. This application provides users with accurate and up-to-date information about the price, market cap, trading volume, and other important metrics of cryptocurrencies. <br/>
 
-## Project Screen Shot(s)
-![image](https://github.com/alok-96/crypto-coin/assets/90456532/824821db-a88b-4fb8-ba03-230db814046a)
+This application is connected to the Coingecko API, which is a popular source of data for cryptocurrency information. Coingecko provides data on thousands of cryptocurrencies, including their current price, historical price data, trading volume, market cap, and other important metrics. 
 
-![image](https://github.com/alok-96/crypto-coin/assets/90456532/3d9e41f3-d80d-4b09-a30e-e5914928cddd)
+👉 Live Demo:  <a href='https://crypto-coin-alok96.netlify.app/'>Crypto Coin</a>
 
-![image](https://github.com/alok-96/crypto-coin/assets/90456532/da97e2c9-10d1-4d8c-b889-f34c96ea923b)
+### Built With:
+
+» React.js <br />
+» CSS <br />
+» Chakra UI <br />
+» Coingecko API <br />
+
+
+## Screenshots of the Project 📸
+
+<h3 align='center'>Home Page 🏠</h3>
+
+![image](https://github.com/alok-96/crypto-coin/assets/90456532/68275c81-48ba-474c-ac55-b4bb1d0ea356)
+
+<br />
+<h3 align='center'>Coin Description Page 🪙</h3>
+
+![image](https://github.com/alok-96/crypto-coin/assets/90456532/fc40a58a-e925-4556-b39d-b77d6238e441)
 
 
 
-## Installation and Setup Instructions
+## Installation and Setup Instructions 🛠️
 
-Clone down this repository. You will need `node` and `npm` installed globally on your machine.
+```
+1. Clone this repository
+   git clone https://github.com/alok-96/crypto-coin.git
 
- `npm start`
- 
-Runs the app in the development mode.<br />
-Open `http://localhost:3000` to view it in the browser.
+2. Go into the repository
+   cd crypto-coin
 
- `npm test`
- 
-Launches the test runner in the interactive watch mode.<br />
+3. Install dependencies
+   npm install
 
-`npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Start a local dev server
+   npm start
+```
 
 
 <h3 align='center'>Made With ❤️ by <a href='https://github.com/alok-96' >alok-96</a></h3>
