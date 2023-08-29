@@ -1,8 +1,6 @@
 import React from "react";
 import {
   HStack,
-  Button,
-  Img,
   Text,
   Menu,
   MenuButton,
@@ -11,70 +9,126 @@ import {
   IconButton,
   Show,
   Hide,
+  Container,
 } from "@chakra-ui/react";
-import { BiMenuAltRight } from "react-icons/bi";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png";
+import { HashLink } from "react-router-hash-link";
 import "../styles/App.css";
 
 const Header = () => {
   return (
-    <HStack
-      p={["2", "4"]}
-      justifyContent={"space-between"}
-      alignItems={"center"}
-      h={["8vh", "9vh", "10vh"]}
-      boxShadow={"10px 0px 10px #222222"}
+    <div
+      className="header"
+      style={{
+        position: "fixed",
+        background: "transparent",
+        backdropFilter: "blur(10px)",
+        width: "100vw",
+      }}
     >
-      <HStack alignItems={"center"}>
-        <Img src={logo} w={"50px"}></Img>
-        <Text
-          fontSize={["20px", "25px", "30px"]}
-          fontWeight={"500"}
-          color={"#986d2c"}
+      <Container maxW={"container.xl"}>
+        <HStack
+          justifyContent={"space-between"}
+          alignItems={"center"}
+          h={["10vh", "10vh", "15vh"]}
         >
-          Crypto Coin
-        </Text>
-      </HStack>
+          <HStack alignItems={"center"}>
+            <Text
+              fontSize={["20px", "25px", "28px"]}
+              fontWeight={"600"}
+              color={"#ffffff"}
+            >
+              Crypto Coin
+            </Text>
+          </HStack>
 
-      <Hide breakpoint="(max-width: 600px)">
-        <HStack gap={"30px"}>
-          <Button variant={"link"} color={"#222222"}>
-            <Link to="/">Home</Link>
-          </Button>
-          <Button variant={"link"} color={"#222222"}>
-            <Link to="/exchanges">Exchanges</Link>
-          </Button>
-          <Button variant={"link"} color={"#222222"}>
-            <Link to="/coins">Coins</Link>
-          </Button>
+          <Hide breakpoint="(max-width: 950px)">
+            <HStack
+              gap={"30px"}
+              fontWeight={"500"}
+              fontSize={"1.2rem"}
+              color={"#ffffff"}
+              cursor={"pointer"}
+            >
+              <p>
+                <HashLink smooth to="/#heroSection">
+                  Home
+                </HashLink>
+              </p>
+              <p>
+                <Link to="/coins">Market</Link>
+              </p>
+              <p>
+                <HashLink smooth to="/#howToStart">
+                  How To Start
+                </HashLink>
+              </p>
+              <p>
+                <HashLink smooth to="/#explore">
+                  Explore
+                </HashLink>
+              </p>
+            </HStack>
+            <HStack
+              fontWeight={"500"}
+              gap={"30px"}
+              color={"#ffffff"}
+              fontSize={"1.2rem"}
+              cursor={"pointer"}
+            >
+              <p>
+                <HashLink smooth to="/#getStarted">
+                  Sign Up
+                </HashLink>
+              </p>
+              <button className="button">
+                <HashLink smooth to="/#getStarted">
+                  Get Started
+                </HashLink>
+              </button>
+            </HStack>
+          </Hide>
+
+          <Show breakpoint="(max-width: 950px)">
+            <Menu>
+              <MenuButton
+                as={IconButton}
+                aria-label="Options"
+                icon={<GiHamburgerMenu />}
+                variant="none"
+                color={"#ffffff"}
+              />
+              <MenuList bgColor={"#0f051d"}>
+                <MenuItem bgColor={"#0f051d"} color={"#ffffff"}>
+                  <HashLink smooth to="/#heroSection">
+                    Home
+                  </HashLink>
+                </MenuItem>
+                <MenuItem bgColor={"#0f051d"} color={"#ffffff"}>
+                  <Link to="/coins">Market</Link>
+                </MenuItem>
+                <MenuItem bgColor={"#0f051d"} color={"#ffffff"}>
+                  <HashLink smooth to="/#howToStart">
+                    How To Start
+                  </HashLink>
+                </MenuItem>
+                <MenuItem bgColor={"#0f051d"} color={"#ffffff"}>
+                  <HashLink smooth to="/#explore">
+                    Explore
+                  </HashLink>
+                </MenuItem>
+                <MenuItem bgColor={"#0f051d"} color={"#ffffff"}>
+                  <HashLink smooth to="/#getStarted">
+                    Sign Up
+                  </HashLink>
+                </MenuItem>
+              </MenuList>
+            </Menu>
+          </Show>
         </HStack>
-      </Hide>
-
-      <Show breakpoint="(max-width: 600px)">
-        <Menu>
-          <MenuButton
-            as={IconButton}
-            aria-label="Options"
-            icon={<BiMenuAltRight />}
-            variant="outline"
-            border={"1px solid #222222"}
-            color={"#222222"}
-          />
-          <MenuList bgColor={"#e0e0e0"}>
-            <MenuItem bgColor={"#e0e0e0"} color={"#222222"}>
-              <Link to="/">Home</Link>
-            </MenuItem>
-            <MenuItem bgColor={"#e0e0e0"} color={"#222222"}>
-              <Link to="/exchanges">Exchanges</Link>
-            </MenuItem>
-            <MenuItem bgColor={"#e0e0e0"} color={"#222222"}>
-              <Link to="/coins">Coins</Link>
-            </MenuItem>
-          </MenuList>
-        </Menu>
-      </Show>
-    </HStack>
+      </Container>
+    </div>
   );
 };
 

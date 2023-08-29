@@ -34,15 +34,17 @@ const Chart = ({ arr = [], currencySymbol, days }) => {
 
   return (
     <Line
-      options={{ responsive: true }}
+      options={{
+        responsive: true,
+      }}
       data={{
         labels: date,
         datasets: [
           {
             label: `Price in ${currencySymbol}`,
             data: prices,
-            borderColor: "#986d2c",
-            backgroundColor: "rgba(152, 109, 44, 0.5)",
+            borderColor: "#3b4da8",
+            backgroundColor: "rgb(255, 112, 238)",
           },
         ],
       }}

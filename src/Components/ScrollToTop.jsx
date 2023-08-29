@@ -1,7 +1,7 @@
-import { Button } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { AiOutlineArrowUp } from "react-icons/ai";
+import { MdKeyboardArrowUp } from "react-icons/md";
 
 const ScrollToTop = () => {
   const [isVisible, SetIsVisible] = useState(false);
@@ -24,18 +24,19 @@ const ScrollToTop = () => {
   };
 
   return (
-    <Button
+    <Box
       style={{
         display: isVisible ? "block" : "none",
         position: "fixed",
-        bottom: "10vh",
+        bottom: "20px",
         right: "20px",
         zIndex: "1",
+        cursor: "pointer",
       }}
       onClick={goToTop}
     >
-      <AiOutlineArrowUp color="#986d2c" />
-    </Button>
+      <MdKeyboardArrowUp color="#ffffff" size={'30px'} />
+    </Box>
   );
 };
 

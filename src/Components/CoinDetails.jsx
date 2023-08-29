@@ -7,7 +7,6 @@ import {
   RadioGroup,
   Radio,
   Box,
-  VStack,
   Text,
   Image,
   Stat,
@@ -16,17 +15,15 @@ import {
   StatHelpText,
   StatArrow,
   Badge,
-  Progress,
   Button,
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import Error from "./Error";
 import Chart from "./Chart";
+import Header from "./Header";
 
 const CoinDetails = () => {
   const [coin, setCoin] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const [currency, setCurrency] = useState("inr");
   const [days, setDays] = useState("24h");
   const [chartArray, setChartArray] = useState([]);
@@ -89,7 +86,6 @@ const CoinDetails = () => {
         setChartArray(chartData.prices);
         setLoading(false);
       } catch (error) {
-        setError(true);
         setLoading(false);
       }
     };
@@ -97,175 +93,124 @@ const CoinDetails = () => {
     fetchCoin();
   }, [params.id, currency, days]);
 
-  if (error) return <Error />;
   return (
-    <Container maxW={"container.xl"} bgColor={""} color={"#222222"}>
-      {loading ? (
-        <div className="spinner">
-          <Spinner size={"xl"} color={"#986d2c"} />
-        </div>
-      ) : (
-        <>
-          {/* Graph */}
-          <Box w={"full"}>
-            <Chart
-              arr={chartArray}
-              currencySymbol={currencySymbol}
-              days={days}
-            />
-          </Box>
+    <section
+      style={{ background: "#0f051d", color: "#ffffff", paddingBottom: "20px" }}
+    >
+      <Header />
+      <Container
+        maxW={"container.xl"}
+        bgColor={""}
+        color={"#222222"}
+        paddingTop={"12vh"}
+      >
+        {loading ? (
+          <div className="spinner">
+            <Spinner size={"xl"} color={"rgb(255, 112, 238)"} />
+          </div>
+        ) : (
+          <>
+            {/* Currency Symbol  */}
+            <HStack
+              alignItems={"center"}
+              w={"100%"}
+              spacing={"4"}
+              py={"4"}
+              color={"#ffffff"}
+            >
+              <Badge
+                fontSize={"2xl"}
+                bgColor={"#3b4da8"}
+                color={"white"}
+              >{`#${coin.market_cap_rank}`}</Badge>
+              <Image
+                src={coin.image.large}
+                w={"16"}
+                h={"16"}
+                alignSelf={"start"}
+                marginTop={"4"}
+                style={{
+                  filter: "drop-shadow(0 0 0.75rem crimson)",
+                }}
+              />
 
-          {/* RadioButtons for selecting currency */}
-          <RadioGroup value={currency} onChange={setCurrency}>
-            <HStack spacing={8} m={4} justifyContent={"center"}>
-              <Radio value={"inr"} border={"2px solid #222222"}>
-                INR (₹)
-              </Radio>
-              <Radio value={"usd"} border={"2px solid #222222"}>
-                USD ($)
-              </Radio>
-              <Radio value={"eur"} border={"2px solid #222222"}>
-                EUR (€)
-              </Radio>
+              <Stat alignSelf={"start"}>
+                <StatLabel textAlign={"start"}>{coin.name}</StatLabel>
+                <StatNumber>
+                  {currencySymbol}
+                  {coin.market_data.current_price[currency]}
+                </StatNumber>
+                <StatHelpText textAlign={"start"}>
+                  <StatArrow
+                    type={
+                      coin.market_data.price_change_percentage_24h > 0
+                        ? "increase"
+                        : "decrease"
+                    }
+                  />
+                  {coin.market_data.price_change_percentage_24h}%
+                </StatHelpText>
+              </Stat>
             </HStack>
-          </RadioGroup>
 
-          {/* Buttons for selecting No. of days */}
-          <HStack wrap={"wrap"} justifyContent={"center"} p={"4"}>
-            {buttons.map((i) => (
-              <Button
-                key={i}
-                isDisabled={i === days}
-                onClick={() => changeChartDetails(i)}
-                color={"#222222"}
-                bgColor={"#b5b5b5"}
-                mx={["1", "2", "4"]}
+            {/* Graph */}
+            <Box w={"full"}>
+              <Chart
+                arr={chartArray}
+                currencySymbol={currencySymbol}
+                days={days}
+              />
+            </Box>
+
+            {/* RadioButtons for selecting currency */}
+            <RadioGroup value={currency} onChange={setCurrency}>
+              <HStack
+                spacing={[4, 4, 8]}
+                m={4}
+                justifyContent={"center"}
+                color={"#ffffff"}
               >
-                {i}
-              </Button>
-            ))}
-          </HStack>
+                <Radio value={"inr"} border={"2px solid #ffffff"}>
+                  INR (₹)
+                </Radio>
+                <Radio value={"usd"} border={"2px solid #ffffff"}>
+                  USD ($)
+                </Radio>
+                <Radio value={"eur"} border={"2px solid #ffffff"}>
+                  EUR (€)
+                </Radio>
+              </HStack>
+            </RadioGroup>
 
-          {/* Currency Symbol and Range for 24 Hour */}
-          <VStack alignItems={"flex-start"} spacing={"4"} py={"4"}>
-            <Text alignSelf={"center"} opacity={"0.7"} fontSize={"small"}>
+            {/* Buttons for selecting No. of days */}
+            <HStack wrap={"wrap"} justifyContent={"center"} py={"4"}>
+              {buttons.map((i) => (
+                <Button
+                  key={i}
+                  isDisabled={i === days}
+                  onClick={() => changeChartDetails(i)}
+                  color={"#ffffff"}
+                  bgColor={"#3b4da8"}
+                  mx={["1", "2", "4"]}
+                >
+                  {i}
+                </Button>
+              ))}
+            </HStack>
+            <Text
+              width={"full"}
+              opacity={"0.7"}
+              fontSize={"small"}
+              color={"#ffffff"}
+              style={{ textAlign: "center" }}
+            >
               Last Updated on {coin.market_data.last_updated}
             </Text>
-            <Image
-              src={coin.image.large}
-              w={"16"}
-              h={"16"}
-              alignSelf={["center", "start", "start"]}
-              marginTop={"4"}
-            />
-
-            <Stat alignSelf={["center", "start", "start"]}>
-              <StatLabel textAlign={["center", "start", "start"]}>
-                {coin.name}
-              </StatLabel>
-              <StatNumber>
-                {currencySymbol}
-                {coin.market_data.current_price[currency]}
-              </StatNumber>
-              <StatHelpText textAlign={["center", "start", "start"]}>
-                <StatArrow
-                  type={
-                    coin.market_data.price_change_percentage_24h > 0
-                      ? "increase"
-                      : "decrease"
-                  }
-                />
-                {coin.market_data.price_change_percentage_24h}%
-              </StatHelpText>
-            </Stat>
-
-            <Badge
-              fontSize={"2xl"}
-              bgColor={"#986d2c"}
-              color={"white"}
-            >{`#${coin.market_cap_rank}`}</Badge>
-
-            {/* Range Bar */}
-            <VStack w={"full"}>
-              <Progress w={"full"} value={50} colorScheme={"facebook"} />
-              <HStack justifyContent={"space-between"} w={"full"}>
-                <Badge
-                  children={`${currencySymbol} ${coin.market_data.high_24h[currency]}`}
-                  colorScheme={"red"}
-                />
-                <Text fontSize={"sm"}>24h Range</Text>
-                <Badge
-                  children={`${currencySymbol} ${coin.market_data.low_24h[currency]}`}
-                  colorScheme={"green"}
-                />
-              </HStack>
-            </VStack>
-          </VStack>
-
-          {/* Some other details about selected coin */}
-          <Box w={"full"} py={"4"}>
-            <Item
-              title={"Max Supply"}
-              value={
-                coin.market_data.max_supply ? (
-                  coin.market_data.max_supply
-                ) : (
-                  <>Not Available</>
-                )
-              }
-            />
-            <Item
-              title={"Circulating Supply"}
-              value={
-                coin.market_data.circulating_supply ? (
-                  coin.market_data.circulating_supply
-                ) : (
-                  <>Not Available</>
-                )
-              }
-            />
-            <Item
-              title={"Market Cap"}
-              value={
-                coin.market_data.market_cap[currency] ? (
-                  `${currencySymbol}${coin.market_data.market_cap[currency]}`
-                ) : (
-                  <>Not Available</>
-                )
-              }
-            />
-            <Item
-              title={"All Time Low"}
-              value={
-                coin.market_data.atl[currency] ? (
-                  `${currencySymbol}${coin.market_data.atl[currency]}`
-                ) : (
-                  <>Not Available</>
-                )
-              }
-            />
-            <Item
-              title={"All Time High"}
-              value={
-                coin.market_data.atl[currency] ? (
-                  `${currencySymbol}${coin.market_data.ath[currency]}`
-                ) : (
-                  <>Not Available</>
-                )
-              }
-            />
-          </Box>
-        </>
-      )}
-    </Container>
+          </>
+        )}
+      </Container>
+    </section>
   );
 };
-
-const Item = ({ title, value }) => (
-  <HStack justifyContent={"space-between"} fontWeight={"500"} my={"4"}>
-    <Text>{title}</Text>
-    <Text>{value}</Text>
-  </HStack>
-);
 
 export default CoinDetails;

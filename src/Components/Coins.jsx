@@ -8,12 +8,11 @@ import {
   Radio,
 } from "@chakra-ui/react";
 import CoinCard from "./CoinCard";
-import Error from "./Error";
+import Header from "./Header";
 
 const Coins = () => {
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const [currency, setCurrency] = useState("inr");
 
   const currencySymbol =
@@ -28,7 +27,6 @@ const Coins = () => {
         setCoins(data);
         setLoading(false);
       } catch (error) {
-        setError(true);
         setLoading(false);
       }
     };
@@ -36,51 +34,52 @@ const Coins = () => {
     fetchCoins();
   });
 
-
-  if (error) return <Error />;
   return (
-    <Container maxW={"container.xl"} bgColor={""}>
-      {loading ? (
-        <div className="spinner">
-          <Spinner size={"xl"} color={"#986d2c"} />
-        </div>
-      ) : (
-        <>
-          <RadioGroup value={currency} onChange={setCurrency}>
-            <HStack
-              color={"#222222"}
-              spacing={8}
-              m={4}
-              justifyContent={"center"}
-            >
-              <Radio value={"inr"} border={"2px solid #222222"}>
-                INR (₹)
-              </Radio>
-              <Radio value={"usd"} border={"2px solid #222222"}>
-                USD ($)
-              </Radio>
-              <Radio value={"eur"} border={"2px solid #222222"}>
-                EUR (€)
-              </Radio>
-            </HStack>
-          </RadioGroup>
+    <section style={{ background: "#0f051d", color: "#ffffff" }}>
+      <Header />
+      <Container maxW={"container.xl"} bgColor={""} paddingTop={"12vh"}>
+        {loading ? (
+          <div className="spinner">
+            <Spinner size={"xl"} color={"rgb(255, 112, 238)"} />
+          </div>
+        ) : (
+          <>
+            <RadioGroup value={currency} onChange={setCurrency}>
+              <HStack
+                color={"#ffffff"}
+                spacing={[4, 4, 8]}
+                p={4}
+                justifyContent={"center"}
+              >
+                <Radio value={"inr"} border={"2px solid #ffffff"}>
+                  INR (₹)
+                </Radio>
+                <Radio value={"usd"} border={"2px solid #ffffff"}>
+                  USD ($)
+                </Radio>
+                <Radio value={"eur"} border={"2px solid #ffffff"}>
+                  EUR (€)
+                </Radio>
+              </HStack>
+            </RadioGroup>
 
-          <HStack wrap={"wrap"} justifyContent={"space-evenly"}>
-            {coins.map((i) => (
-              <CoinCard
-                key={i.id}
-                id={i.id}
-                name={i.name}
-                img={i.image}
-                symbol={i.symbol}
-                price={i.current_price}
-                currencySymbol={currencySymbol}
-              />
-            ))}
-          </HStack>
-        </>
-      )}
-    </Container>
+            <HStack wrap={"wrap"} justifyContent={"space-evenly"}>
+              {coins.map((i) => (
+                <CoinCard
+                  key={i.id}
+                  id={i.id}
+                  name={i.name}
+                  img={i.image}
+                  symbol={i.symbol}
+                  price={i.current_price}
+                  currencySymbol={currencySymbol}
+                />
+              ))}
+            </HStack>
+          </>
+        )}
+      </Container>
+    </section>
   );
 };
 
