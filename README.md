@@ -1,3 +1,5 @@
+<div align='center'><img style="width:20%" src='https://github.com/alok-96/crypto-coin/assets/90456532/1d5ceddb-2908-4f02-badc-d89416e96b8b'/></div>
+
 ## About the Project 📂
 <b>Crypto Coin</b> is an web application that allows users to search for information about various cryptocurrencies in real-time. This application provides users with accurate and up-to-date information about the price, market cap, trading volume, and other important metrics of cryptocurrencies. <br/>
 
