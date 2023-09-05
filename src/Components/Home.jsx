@@ -213,6 +213,7 @@ const Home = () => {
                 width={"200px"}
                 height={"200px"}
                 alignSelf={"center"}
+                style={{ filter: "drop-shadow(2mm 0mm 15mm rgb(88, 52, 99))" }}
               />
               <Heading fontSize={"lg"} my={"4"} className={"gradientText"}>
                 Advanced Data Encryption
@@ -229,21 +230,24 @@ const Home = () => {
               padding={"20px"}
               my={"4"}
               display={"flex"}
-              flexDirection={"column"}
+              flexDirection={["column-reverse", "column-reverse", "column"]}
               justifyContent={"space-between"}
             >
-              <Heading fontSize={"lg"} my={"4"} className={"gradientText"}>
-                Secure Asset Fund for Users
-              </Heading>
-              <Text>
-                We store 10% of all trading fees in a secure asset fund to
-                protect a share of user funds.
-              </Text>
+              <div>
+                <Heading fontSize={"lg"} my={"4"} className={"gradientText"}>
+                  Secure Asset Fund for Users
+                </Heading>
+                <Text>
+                  We store 10% of all trading fees in a secure asset fund to
+                  protect a share of user funds.
+                </Text>
+              </div>
               <Img
                 src={asset5}
                 width={"200px"}
                 height={"200px"}
                 alignSelf={"center"}
+                style={{ filter: "drop-shadow(2mm 0mm 15mm rgb(88, 52, 99))" }}
               />
             </Box>
             <Box
@@ -261,6 +265,7 @@ const Home = () => {
                 width={"200px"}
                 height={"200px"}
                 alignSelf={"center"}
+                style={{ filter: "drop-shadow(2mm 0mm 15mm rgb(88, 52, 99))" }}
               />
               <Heading fontSize={"lg"} my={"4"} className={"gradientText"}>
                 Personalised Access Control

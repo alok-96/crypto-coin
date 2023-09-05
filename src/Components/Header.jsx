@@ -25,6 +25,7 @@ const Header = () => {
         background: "transparent",
         backdropFilter: "blur(10px)",
         width: "100vw",
+        zIndex: "1",
       }}
     >
       <Container maxW={"container.xl"}>
